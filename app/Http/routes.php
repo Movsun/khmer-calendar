@@ -28,4 +28,4 @@ Route::get('/api/v1/calendar/{year}', 'ApiController@year');
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'CalendarController@index');

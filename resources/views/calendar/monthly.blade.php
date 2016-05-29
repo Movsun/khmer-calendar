@@ -2,8 +2,8 @@
 
 @section('content')
 
-  <div style="font-family: Bokor;text-align: center;font-size: 25pt;color: white">ឆ្នាំវក អដ្ឋស័ក, ព.ស. ២៥៦០</div>
-  <div style="font-family: Bokor;text-align: center;font-size: 25pt;color:white">ខែចេត្រ . ខែពិសាខ</div>
+  <div style="font-family: Bokor;text-align: center;font-size: 25pt;color: white">ឆ្នាំ{{$data[0]->kh_year}}, ព.ស. {{$data[0]->be_year}}</div>
+  <div style="font-family: Bokor;text-align: center;font-size: 25pt;color:white">ខែ{{$data[0]->kh_month}} . ខែ{{$data[count($data)-1]->kh_month}}</div>
   <form class="form-inline" method="post" action="/calendar">
     {!! csrf_field() !!}
     <ul class="pager">
