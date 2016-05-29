@@ -10,7 +10,8 @@ use Carbon\Carbon;
 class CalendarController extends Controller {
 
 	public function index(){
-		return 'hi';
+		$today = Carbon::today();
+		return redirect()->action('CalendarController@show', [$today->year, $today->month]);
 	}
 
 	public function show($year, $month)

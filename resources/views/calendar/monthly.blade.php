@@ -2,7 +2,8 @@
 
 @section('content')
 
-
+  <div style="font-family: Bokor;text-align: center;font-size: 25pt;color: white">ឆ្នាំវក អដ្ឋស័ក, ព.ស. ២៥៦០</div>
+  <div style="font-family: Bokor;text-align: center;font-size: 25pt;color:white">ខែចេត្រ . ខែពិសាខ</div>
   <form class="form-inline" method="post" action="/calendar">
     {!! csrf_field() !!}
     <ul class="pager">
@@ -30,16 +31,17 @@
   </form>
 
 
+ <br></br>
   <table class="table" >
 
-    <tr>
-      <th class="col-md-1">Sunday</th>
-      <th class="col-md-1">Monday</th>
-      <th class="col-md-1">Tueday</th>
-      <th class="col-md-1">Wednesday</th>
-      <th class="col-md-1">Thurday</th>
-      <th class="col-md-1">Friday</th>
-      <th class="col-md-1">Saturday</th>
+    <tr bgcolor="white"; style="color:blue;font-family: Bokor;font-size: larger">
+      <th class="col-md-1" > អាទិត្យ</th>
+      <th class="col-md-1"> ចន្ទ</th>
+      <th class="col-md-1">អង្គារ៍</th>
+      <th class="col-md-1">ពុធ</th>
+      <th class="col-md-1">ព្រហ</th>
+      <th class="col-md-1">សុក្រ</th>
+      <th class="col-md-1">សៅរ៍</th>
     </tr>
 
     <!-- <tr> -->
@@ -48,8 +50,8 @@
         <tr>
           @for($j=0; $j<7; $j++)
             <td class="table-bordered">
-              <div style="height: 75px; overflow:auto; position:relative; {{$data[$i*7+$j]->date->month != $month ? ' opacity:0.5': ''}}">
-                <div class="text-center {{$data[$i*7+$j]->is_a_holy_day? 'text-danger': 'text-primary'}}"> {{$data[$i*7+$j]->day_name}} </div>
+              <div style="height: 75px; overflow:auto; position:relative ;background-color:white; {{$data[$i*7+$j]->date->month != $month ? ' opacity:0.3': ''}};">
+                <div style="color: black;font-family: Bokor;" class="text-center  {{$data[$i*7+$j]->is_a_holy_day? 'text-danger': 'text-primary'}}"> {{$data[$i*7+$j]->day_name}} </div>
 <!--
                 @if($data[$i*7+$j]->isStartOfMonth)
                   <div> ខែ {{$data[$i*7+$j]->khmerMonth}} </div>
@@ -57,21 +59,21 @@
                   <div> ដាច់ខែ {{$data[$i*7+$j]->khmerMonth}} </div>
                 @endif -->
 
-                <div class="text-center text-primary"> ខែ{{$data[$i*7+$j]->KhmerMonth->name}} </div>
+                <div class="text-center text-primary"; style="color:black;font-family: Bokor"> ខែ{{$data[$i*7+$j]->KhmerMonth->name}} </div>
 
-                <div style="position:absolute; bottom:0; right:0;">
+                <div style="position:absolute; bottom:0; right:0;color:black;font-size: x-large;font-family: 'Times New Roman'" >
                     {{$data[$i*7+$j]->date->day}}
                 </div>
                 @if($data[$i*7+$j]->is_a_holy_day)
-                  <div style="position:absolute; top:0; left:0;">
+                  <div style="position:absolute; top:0; left:0">
                     <img src="/image/holy_day.png" width="25px" height="25px">
                   </div>
-                  <div class="text-center text-danger">
+                  <div style="font-family: Bokor; color: red ; font-size: large" class="text-left text-danger ">
                     ថ្ងៃសើល
                   </div>
                 @endif
                 @foreach($data[$i*7+$j]->events as $event)
-                  <div class="text-center text-danger">
+                  <div style="font-family: Bokor" class="text-center text-danger">
                     {{$event->kh_name}}
                   </div>
                 @endforeach
@@ -82,7 +84,7 @@
       @endfor
 
       <!-- <td class="table-bordered">
-        <div style="height: 100px; overflow:auto; position:relative;">
+        <div style="height: 100px; overflow:auto; position:relative">
           <div class="text-center text-primary"> 7 រោច </div>
           <div style="position:absolute; top:0; left:0;">
             <img src="image/holy_day.png" width="25px" height="25px">
