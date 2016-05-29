@@ -46,6 +46,9 @@ class khmerCalendarsTableSeeder extends Seeder
           if ($currentDate->day == 17 && $currentDate->month == 4 ) {
             $khmerYear += 1;
             $khmerYearId += 1;
+            if ($khmerYearId == 13) {
+              $khmerYearId = 1;
+            }
             $isLeapDay = $this->isLeapDay($khmerYear);
             $isLeapMonth = $this->isLeapMonth($khmerYear);
           }
@@ -54,11 +57,6 @@ class khmerCalendarsTableSeeder extends Seeder
           if ($khmerDay > $maxDay) {
             $khmerDay = 1;
             $khmerMonth += 1;
-
-
-            if ($khmerYearId == 13) {
-              $khmerYearId = 1;
-            }
 
             if ($khmerMonth == 12) {
               $khmerMonth = 0;

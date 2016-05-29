@@ -33,8 +33,11 @@ class CalendarController extends Controller {
 		} else {
 			$next = $year.'/'.($month+1);
 		}
-		//
-		return view('calendar.monthly', compact('data', 'year', 'month', 'next', 'previous'));
+		//sak
+		$sak = ["អដ្ឋ​ស័ក", "នព្វស័ក", "សំរឹទ្ធិស័ក", "ឯកស័ក", "ទស័កោ", "តស័ក្រី", "ចតស័ក្វា", "បញ្ចស័ក", "ឆស័ក", "សបស័ក្ត"];
+
+
+		return view('calendar.monthly', compact('data', 'year', 'month', 'next', 'previous', 'sak'));
 		// return 'hi';
 	}
 
