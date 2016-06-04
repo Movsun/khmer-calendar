@@ -17,8 +17,6 @@ class ApiController extends Controller
         $to = Carbon::create($year, $month, 1)->startOfWeek()->addDay(-1)->addDay(41);
         $data = KhmerCalendar::whereBetween('date', [$from, $to])->get();
 
-
-
         return Response::json(array(
                   'error' => false,
                   'data' => $data,
@@ -38,5 +36,9 @@ class ApiController extends Controller
                   'data' => $data,
                   'status_code' => 200
               ));
+      }
+
+      public function test(Request $request){
+        return $request->name;
       }
 }

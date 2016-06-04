@@ -11,21 +11,42 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => 'web'], function(){
+
+  Route::get('/', function () {
+      return view('welcome');
+  });
+
+  Route::auth();
+
+  Route::get('/home', 'CalendarController@index');
+
+  Route::post('/calendar', 'CalendarController@postShow');
+
+  Route::get('/calendar/{year}/{month}', 'CalendarController@show');
+
+  Route::get('/calendar', 'CalendarController@index');
+
 });
 
-// Route::get('/test', 'TestController@index');
-Route::post('/calendar', 'CalendarController@postShow');
+Route::group(['prefix' => 'api/v1', 'middleware' => 'api'], function(){
 
-Route::get('/calendar/{year}/{month}', 'CalendarController@show');
+  Route::post('/auth/signup', 'ApiAuthController@signup');
 
-Route::get('/calendar', 'CalendarController@index');
+  Route::post('/auth/login', 'ApiAuthController@login');
 
-Route::get('/api/v1/calendar/{year}/{month}', 'ApiController@show');
+  Route::get('/calendar/{year}/{month}', 'ApiController@show');
 
-Route::get('/api/v1/calendar/{year}', 'ApiController@year');
+  Route::get('/calendar/{year}', 'ApiController@year');
 
-Route::auth();
+  // Route::post('/calendar', 'ApiController@test');
 
-Route::get('/home', 'CalendarController@index');
+  Route::post('/events', 'ApiEventController@index');
+
+  Route::post('/events/create', 'ApiEventController@store');
+
+  Route::post('/events/update', 'ApiEventController@update');
+
+  Route::post('/events/delete', 'ApiEventController@destroy');
+
+});

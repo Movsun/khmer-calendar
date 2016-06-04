@@ -10,6 +10,8 @@ class KhmerCalendar extends Model
       'date'
     ];
 
+    protected $dateFormat = 'Y-m-d';
+
     protected $hidden = [
       'id', 'khmer_year','khmer_years_id', 'khmer_months_id', 'khmer_day', 'created_at', 'updated_at', 'day_name'
     ];
