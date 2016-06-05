@@ -24,10 +24,10 @@ class UserEvent extends Model
     protected $hidden = [
       'created_at',
       'updated_at',
-      'users_id',
+      'user_id',
     ];
 
     public function user(){
-      return $this->belongsTo('App\User', 'users_id');
+      return $this->belongsTo('App\User');
     }
 }

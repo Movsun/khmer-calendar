@@ -40,7 +40,7 @@ class ApiEventController extends Controller
       $validator = Validator::make($data, [
           'name' => 'required|string',
           'description' => 'string',
-          'time' => 'required|date_format:H:i:s',
+          'time' => 'date_format:H:i:s',
           'date' => 'required|date',
       ]);
 
@@ -69,14 +69,14 @@ class ApiEventController extends Controller
           'id' => 'required|integer',
           'name' => 'required|string',
           'description' => 'string',
-          'time' => 'required|date_format:H:i:s',
+          'time' => 'date_format:H:i:s',
           'date' => 'required|date',
       ]);
       if ($validator->fails()) {
         return $this->jsonResponse(true, null, $validator->errors()->all(), 400);
       }
 
-      $event = UserEvent::where('id', $request->id)->where('users_id', Auth::user()->id)->first();
+      $event = UserEvent::where('user_id', Auth::user()->id)->where('id', $request->id)->first();
       if (!$event) {
         return $this->jsonResponse(true, null, 'Not Found', 400);
       }
@@ -102,7 +102,7 @@ class ApiEventController extends Controller
         return $this->jsonResponse(true, null, $validator->errors()->all(), 400);
       }
 
-      $event = UserEvent::where('id', $request->id)->where('users_id', Auth::user()->id)->first();
+      $event = UserEvent::where('user_id', Auth::user()->id)->where('id', $request->id)->first();
       if (!$event) {
         return $this->jsonResponse(true, null, 'Not Found', 400);
       }
