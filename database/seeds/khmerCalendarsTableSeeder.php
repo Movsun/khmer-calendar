@@ -14,7 +14,7 @@ class khmerCalendarsTableSeeder extends Seeder
     {
         $startDate = Carbon::create(1900, 1, 1);
         $currentDate = $startDate;
-        $endDate = Carbon::create(2100, 1, 1);
+        $endDate = Carbon::create(3000, 1, 1);
         $khmerYear = 2443;
         $khmerMonth = 1;
         $khmerDay = 1;

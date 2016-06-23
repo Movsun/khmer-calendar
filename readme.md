@@ -1,3 +1,8 @@
+# Installation
+Config database in .env file.
+Run database migrate and seeder.
+php artisan migrate --seed.
+
 # Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
